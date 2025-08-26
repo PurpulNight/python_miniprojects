@@ -1,0 +1,21 @@
+from quiz_brain import QuizBrain
+from question_model import Question
+from data import question_data
+
+print('Welcome to the Quiz Game!')
+print('You will be asked a series of True/False questions. Type your answer as "True" or "False".')
+ques_bank = []
+for i in question_data:
+    ques_text = i['text']
+    ques_answer = i['answer']
+    ques_bank.append(Question(ques_text, ques_answer))
+
+quiz_brain = QuizBrain(ques_bank)
+while quiz_brain.still_has_question():
+    quiz_brain.next_question()
+
+print(f'You have completed the quiz. Your final score is {quiz_brain.score} out of {len(ques_bank)}.')
+
+
+
+
